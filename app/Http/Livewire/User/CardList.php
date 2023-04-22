@@ -8,10 +8,12 @@ use Livewire\Component;
 class CardList extends Component
 {
     public $card;
+    public $show;
 
     protected $listeners = [
         'cardClicked' => 'changeSelectedCard',
-        'disassociateCard' => 'clearCard',
+        'showCards' => 'show',
+        'hideCards' => 'hide'
     ];
 
     public function changeSelectedCard(Card $card)
@@ -24,8 +26,20 @@ class CardList extends Component
         $this->card = new Card(["value" => '']);
     }
 
+    public function show()
+    {
+        $this->show = true;
+    }
+
+    public function hide()
+    {
+        $this->show = false;
+        $this->clearCard();
+    }
+
     public function mount($card)
     {
+        $this->show = false;
         $this->card = $card ?? new Card(["value" => '']);
     }
 
