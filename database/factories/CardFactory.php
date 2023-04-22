@@ -17,7 +17,7 @@ class CardFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->randomNumber(1),
+            'value' => fake()->randomNumber(1),
         ];
     }
 }

@@ -18,5 +18,16 @@
                 @endauth
             </div>
         @endif
+        <div class="row justify-content-around mt-5 mx-2">
+            @foreach ($cards as $card)
+                <livewire:card :card="$card" />
+            @endforeach
+
+            <ul class="list-group mt-5">
+                @foreach ($users as $user)
+                    <livewire:user.lista :user="$user" :wire:key="$user->id" />
+                @endforeach
+            </ul>
+        </div>
     </div>
 @endsection
