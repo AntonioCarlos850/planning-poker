@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->middleware('auth');
 
 require __DIR__ . '/auth.php';

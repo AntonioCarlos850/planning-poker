@@ -9,6 +9,7 @@ class CardList extends Component
 {
     public $card;
     public $show;
+    public $isSelectedCard;
 
     protected $listeners = [
         'cardClicked' => 'changeSelectedCard',
@@ -19,10 +20,12 @@ class CardList extends Component
     public function changeSelectedCard(Card $card)
     {
         $this->card = $card;
+        $this->isSelectedCard = true;
     }
 
     public function clearCard()
     {
+        $this->isSelectedCard = false;
         $this->card = new Card(["value" => '']);
     }
 
@@ -40,6 +43,7 @@ class CardList extends Component
     public function mount($card)
     {
         $this->show = false;
+        $this->isSelectedCard = $card ? true : false;
         $this->card = $card ?? new Card(["value" => '']);
     }
 

@@ -14,7 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Card::factory(5)->create();
+        Card::factory(8)->sequence(
+            ['value' => '?'],
+            ['value' => '1/2'],
+            ['value' => '1'],
+            ['value' => '2'],
+            ['value' => '3'],
+            ['value' => '4'],
+            ['value' => '5'],
+            ['value' => '∞'],
+        )->create();
 
         \App\Models\User::factory()->create([
             'name' => 'Admin',

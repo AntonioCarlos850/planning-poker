@@ -21,7 +21,7 @@
 
         <div class="row justify-content-around mt-5 mx-2">
             @foreach ($cards as $card)
-                <livewire:card :card="$card" />
+                <livewire:card :card="$card" :wire:key="$card->id" />
             @endforeach
 
             <div class="col-12 d-flex justify-content-end mt-4">

@@ -4,8 +4,16 @@
 
 .planning-card {
     cursor: pointer;
+    box-shadow: 2px 2px 3px #ccc;
+    border: 1px solid #bbb;
+    background-color: #f4f4f4;
+    color: #020202;
     height: 100px;
     transition: box-shadow .2s;
+}
+
+.selected {
+    background-color: #ddd !important;
 }
 
 .planning-card:hover {
@@ -49,11 +57,17 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-    color: black;
+    box-shadow: 2px 2px 3px #ccc;
+    border: 1px solid #bbb;
+    background-color: #f4f4f4;
+    color: #020202;
 }
 
 /* Style the back side */
 .flip-card-back {
-    color: white;
+    box-shadow: 2px 2px 3px #ccc;
+    border: 1px solid #bbb;
+    background-color: #f4f4f4;
+    color: #020202;
     transform: rotateY(180deg);
 }
