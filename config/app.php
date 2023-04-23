@@ -185,4 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'num_of_users' => env('NUMBER_OF_USERS', 5),
+
 ];

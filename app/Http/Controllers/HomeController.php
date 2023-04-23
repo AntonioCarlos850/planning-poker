@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'cards' => Card::all(),
-            'users' => User::all(),
+            'users' => User::orderByDesc('last_login')->limit(config('app.num_of_users'))->get(),
         ]);
     }
 }
