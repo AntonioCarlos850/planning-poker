@@ -17,7 +17,6 @@ class Card extends Component
     public function mount($card)
     {
         $this->card = $card;
-        $this->verifyIfIsSelected($card);
     }
 
     public function verifyIfIsSelected()
@@ -35,6 +34,7 @@ class Card extends Component
 
     public function render()
     {
+        $this->verifyIfIsSelected($this->card);
         return view('livewire.card');
     }
 }
