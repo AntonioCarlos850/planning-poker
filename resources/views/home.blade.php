@@ -4,6 +4,9 @@
     <div class="container-fluid py-4 align-middle align-items-middle">
         @if (Route::has('login'))
             <div class="row justify-content-end">
+                <div class="col">
+                    <h1 class="h1 fw-bold">Olá, {{ auth()->user()->name }}</h1>
+                </div>
                 @auth
                     <form action="{{ route('logout') }}" method="post" class="col-3 col-lg-1">
                         @csrf
