@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Enums\Status;
 use App\Models\Card;
+use App\Models\Session;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
@@ -11,12 +13,13 @@ class CardList extends Component
     public $card;
     public $user;
     public $show;
+    public $session;
     public $isSelectedCard;
 
     protected $listeners = [
         'cardClicked' => 'changeSelectedCard',
-        'showCards' => 'show',
-        'hideCards' => 'hide'
+        'showCards' => '$refresh',
+        'hideCards' => '$refresh'
     ];
 
     protected function isSelected($card)
@@ -32,31 +35,15 @@ class CardList extends Component
         }
     }
 
-    public function clearCard()
-    {
-        $this->isSelectedCard = false;
-        $this->card = new Card(["value" => '']);
-    }
-
-    public function show()
-    {
-        $this->show = true;
-    }
-
-    public function hide()
-    {
-        $this->show = false;
-        $this->clearCard();
-    }
-
     public function mount($user)
     {
-        $this->show = false;
+        $this->session = Session::first();
         $this->user = $user;
     }
 
     public function render()
     {
+        $this->show = $this->session->status == Status::Show;
         $this->isSelectedCard = $this->user->card ? true : false;
         $this->card = $this->user->card ?? new Card(["value" => '']);
 
