@@ -4,6 +4,7 @@
 
 .planning-card {
     cursor: pointer;
+    height: 100px;
     transition: box-shadow .2s;
 }
 

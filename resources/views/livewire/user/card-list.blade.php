@@ -1,5 +1,5 @@
 <div @class([
-    'flip-card text-light col-2 fs-2 me-3 fw-bold rounded planning-card',
+    'flip-card text-light col-8 col-md-2 fs-2 me-3 fw-bold rounded planning-card',
     'show' => $show,
 ])>
     <div class="flip-card-inner">
