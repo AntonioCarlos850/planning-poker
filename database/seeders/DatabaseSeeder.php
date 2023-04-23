@@ -25,9 +25,15 @@ class DatabaseSeeder extends Seeder
             ['value' => '∞'],
         )->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-        ]);
+        \App\Models\User::factory(2)->sequence(
+            [
+                'name' => 'First',
+                'email' => 'first@admin.com',
+            ],
+            [
+                'name' => 'Second',
+                'email' => 'second@admin.com',
+            ],
+        )->create();
     }
 }

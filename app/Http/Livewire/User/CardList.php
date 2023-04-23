@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\Card;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class CardList extends Component
 {
     public $card;
+    public $user;
     public $show;
     public $isSelectedCard;
 
@@ -17,10 +19,17 @@ class CardList extends Component
         'hideCards' => 'hide'
     ];
 
+    protected function isSelected($card)
+    {
+        return $this->user->card_id == $card->id;
+    }
+
     public function changeSelectedCard(Card $card)
     {
-        $this->card = $card;
-        $this->isSelectedCard = true;
+        if ($this->isSelected($card)) {
+            $this->card = $card;
+            $this->isSelectedCard = true;
+        }
     }
 
     public function clearCard()
@@ -40,15 +49,17 @@ class CardList extends Component
         $this->clearCard();
     }
 
-    public function mount($card)
+    public function mount($user)
     {
         $this->show = false;
-        $this->isSelectedCard = $card ? true : false;
-        $this->card = $card ?? new Card(["value" => '']);
+        $this->user = $user;
     }
 
     public function render()
     {
+        $this->isSelectedCard = $this->user->card ? true : false;
+        $this->card = $this->user->card ?? new Card(["value" => '']);
+
         return view('livewire.user.card-list');
     }
 }
