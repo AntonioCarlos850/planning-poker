@@ -24,7 +24,7 @@
 
         <div class="row justify-content-around mt-5 mx-2">
             @foreach ($cards as $card)
-                <livewire:card :card="$card" :wire:key="$card->id" />
+                <livewire:card :card="$card" :wire:key="'card-id-'.$card->id" />
             @endforeach
 
             <div class="col-12 d-flex justify-content-end mt-4">
@@ -33,7 +33,7 @@
 
             <ul class="list-group mt-4">
                 @foreach ($users as $user)
-                    <livewire:user.lista :user="$user" :wire:key="$user->id" />
+                    <livewire:user.lista :user="$user" :wire:key="'user-list-id-'.$user->id" />
                 @endforeach
             </ul>
         </div>
