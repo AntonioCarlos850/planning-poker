@@ -36,6 +36,8 @@ Configure seu arquivo `.env` de acordo com suas preferências
 
 ```
 php artisan migrate --seed
+npm install
+npm run build
 ```
 
 ## ☕ Usando Planning Poker
