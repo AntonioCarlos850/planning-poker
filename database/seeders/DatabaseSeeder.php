@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Card::factory(8)->sequence(
+        Card::factory(12)->sequence(
             ['value' => '?'],
             ['value' => '1/2'],
             ['value' => '1'],
@@ -23,20 +23,13 @@ class DatabaseSeeder extends Seeder
             ['value' => '3'],
             ['value' => '4'],
             ['value' => '5'],
+            ['value' => '8'],
+            ['value' => '13'],
+            ['value' => '21'],
+            ['value' => '34'],
             ['value' => '∞'],
         )->create();
 
         Session::factory()->create();
-
-        \App\Models\User::factory(2)->sequence(
-            [
-                'name' => 'First',
-                'email' => 'first@admin.com',
-            ],
-            [
-                'name' => 'Second',
-                'email' => 'second@admin.com',
-            ],
-        )->create();
     }
 }
