@@ -18,4 +18,9 @@ class Session extends Model
     protected $casts = [
         'status' => Status::class,
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

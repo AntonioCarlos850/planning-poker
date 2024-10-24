@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Card::class);
     }
+
+    public function session(): BelongsTo
+    {
+        return $this->belongsTo(Session::class);
+    }
 }

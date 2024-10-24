@@ -27,9 +27,7 @@
                 <livewire:card :card="$card" :wire:key="'card-id-'.$card->id" />
             @endforeach
 
-            <div class="col-12 d-flex justify-content-end mt-4">
-                @livewire('user.switch-card')
-            </div>
+            @livewire('user.switch-card')
 
             <ul class="list-group mt-4">
                 @foreach ($users as $user)
