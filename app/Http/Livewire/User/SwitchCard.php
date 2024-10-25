@@ -15,9 +15,27 @@ class SwitchCard extends Component
     public function show()
     {
         $this->session->status = Status::Show;
-        $this->session->average = $this->session->users->reduce(function(?int $carry, User $user) {
-            return $carry + $user->card?->value ?? 0;
-        }, 0) / $this->session->users->count();
+        $counter = 0;
+        $sum = $this->session->users()->with('card')->get()->reduce(function(?float $carry, User $user) use (&$counter) {
+            $value = $user->card?->value ?? 0;
+
+            if ($value === '?') {
+                return $carry;
+            }
+
+            if ($value === '1/2') {
+                $value = 0.5;
+            }
+
+            $counter++;
+            if ($value === '∞') {
+                return 999999999;
+            }
+
+            return $carry + $value;
+        }, 0);
+
+        $this->session->average = $sum / $counter;
 
         $this->session->save();
         $this->emit('showCards');
@@ -35,6 +53,7 @@ class SwitchCard extends Component
     public function mount()
     {
         $this->session = Session::first();
+        $this->session->load('users', 'users.card');
         auth()->user()->session()->associate($this->session);
         auth()->user()->save();
     }

@@ -12,8 +12,6 @@ class HomeController extends Controller
     {
         return view('home', [
             'cards' => Card::all(),
-            'users' => User::orderByDesc('last_login')
-                ->where('logged', true)->limit(config('app.num_of_users'))->get(),
         ]);
     }
 }
