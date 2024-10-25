@@ -17,7 +17,11 @@ class SwitchCard extends Component
         $this->session->status = Status::Show;
         $counter = 0;
         $sum = $this->session->users()->with('card')->get()->reduce(function(?float $carry, User $user) use (&$counter) {
-            $value = $user->card?->value ?? 0;
+            $value = $user->card?->value;
+
+            if ($carry === null) {
+                return $carry;
+            }
 
             if ($value === '?') {
                 return $carry;
